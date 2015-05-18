@@ -85,26 +85,20 @@ class BlockGrid {
     }
 
     blockClicked (e, block) {
-        this.removeBlock(block);
+        this.hideBlock(block);
         this.sortGrid();
         this.render();
     }
 
-    getIdForBlock(block) {
-        return `block_${block.x}x${block.y}`;
-    }
-
-    removeBlock(block) {
+    hideBlock(block) {
         if(block.hidden === true) {
             return;
         }
         block.hidden = true;
-        let elem = document.getElementById(this.getIdForBlock(block));
-        elem.className = elem.className + ' block-hidden';
 
         this.getConnectedBlocks(block)
             .filter((currentBlock) => (currentBlock.colour === block.colour))
-            .forEach(this.removeBlock.bind(this));
+            .forEach(this.hideBlock.bind(this));
     }
 
     getConnectedBlocks(block) {
