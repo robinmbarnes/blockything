@@ -108,7 +108,7 @@ class BlockGrid {
             new Coord(x-1, y),
             new Coord(x, y-1),
             new Coord(x, y+1),
-            new Coord(x+1, y),
+            new Coord(x+1, y)
         ];
 
         let validCoords = coords.filter(
@@ -127,10 +127,5 @@ class Coord {
         this.y = y;
     }
 }
-
-let grid = [
-    [new Block(0,0), new Block(0,1)],
-    [new Block(1,0), new Block(1,1)],
-];
 
 window.addEventListener('DOMContentLoaded', () => new BlockGrid().render());
